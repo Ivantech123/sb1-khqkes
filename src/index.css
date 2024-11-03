@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mobile-first animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px theme('colors.blue.400'); }
+  50% { box-shadow: 0 0 20px theme('colors.blue.400'); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Mobile-optimized scrollbar */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.gray.900');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.gray.700');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.gray.600');
+}
+
+/* Mobile-optimized form inputs */
+.form-input {
+  @apply w-full bg-gray-800 text-gray-100 rounded-lg border border-gray-700 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-input::placeholder {
+  @apply text-gray-500;
+}
+
+.form-select {
+  @apply w-full bg-gray-800 text-gray-100 rounded-lg border border-gray-700 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+.form-textarea {
+  @apply w-full bg-gray-800 text-gray-100 rounded-lg border border-gray-700 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-textarea::placeholder {
+  @apply text-gray-500;
+}
+
+/* Mobile-optimized buttons */
+.btn {
+  @apply px-4 py-3 rounded-lg font-medium transition-all duration-200 active:scale-95;
+  touch-action: manipulation;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white active:bg-blue-700;
+}
+
+.btn-secondary {
+  @apply bg-gray-700 text-white active:bg-gray-600;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white active:bg-red-700;
+}
+
+/* Mobile-optimized cards */
+.card {
+  @apply bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 shadow-xl overflow-hidden;
+}
+
+.card-header {
+  @apply p-4 sm:p-6 border-b border-gray-700/50;
+}
+
+.card-body {
+  @apply p-4 sm:p-6;
+}
+
+.card-footer {
+  @apply p-4 sm:p-6 border-t border-gray-700/50;
+}
+
+/* Mobile-optimized navigation */
+.nav-item {
+  @apply flex flex-col items-center gap-1 text-xs sm:text-sm font-medium;
+}
+
+.nav-icon {
+  @apply w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300;
+}
+
+.nav-label {
+  @apply text-gray-300 transition-colors duration-200;
+}
+
+/* Mobile-optimized form groups */
+.form-group {
+  @apply space-y-1 sm:space-y-2;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-300;
+}
+
+.form-hint {
+  @apply text-xs text-gray-500;
+}
+
+.form-error {
+  @apply text-sm text-red-400 mt-1;
+}
+
+/* Mobile-optimized modals */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 overflow-y-auto;
+  touch-action: none;
+}
+
+.modal-container {
+  @apply min-h-screen px-4 text-center;
+}
+
+.modal-container::before {
+  @apply content-[''] inline-block h-screen align-middle;
+}
+
+.modal-content {
+  @apply inline-block w-full max-w-md sm:max-w-lg text-left align-middle transition-all transform bg-gray-900 rounded-2xl shadow-xl;
+}
+
+/* Mobile-optimized step indicators */
+.step-indicator {
+  @apply grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-4 mb-6 sm:mb-8 px-2 sm:px-0;
+}
+
+.step-item {
+  @apply flex flex-col items-center;
+}
+
+.step-button {
+  @apply w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300;
+}
+
+.step-label {
+  @apply mt-2 text-xs sm:text-sm font-medium transition-all duration-300;
+}
+
+/* Mobile-optimized bottom navigation */
+.bottom-nav {
+  @apply fixed bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm border-t border-gray-800 py-2 px-4 sm:hidden;
+}
+
+.bottom-nav-items {
+  @apply grid grid-cols-4 gap-2;
+}
+
+/* Mobile-optimized floating action button */
+.fab {
+  @apply fixed right-4 bottom-20 sm:bottom-4 w-14 h-14 rounded-full bg-blue-600 text-white shadow-lg flex items-center justify-center transition-all duration-200 active:scale-95;
+  touch-action: manipulation;
+}
+
+/* Mobile-optimized list items */
+.list-item {
+  @apply flex items-center gap-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700/50 active:bg-gray-700/50 transition-colors;
+  touch-action: manipulation;
+}
+
+/* Mobile-optimized search bar */
+.search-bar {
+  @apply sticky top-0 z-10 bg-gray-900/80 backdrop-blur-sm p-4 border-b border-gray-800;
+}
+
+/* Mobile-optimized bottom sheet */
+.bottom-sheet {
+  @apply fixed inset-x-0 bottom-0 z-50 bg-gray-900 rounded-t-2xl shadow-xl transform transition-transform duration-300;
+  touch-action: none;
+}
+
+.bottom-sheet-handle {
+  @apply absolute left-1/2 -translate-x-1/2 -top-1 w-12 h-1 bg-gray-700 rounded-full;
+}
+
+/* Mobile-optimized swipe actions */
+.swipe-action {
+  @apply absolute inset-y-0 flex items-center px-4 bg-red-600 text-white;
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Mobile-optimized pull to refresh */
+.pull-to-refresh {
+  @apply flex items-center justify-center h-16 text-gray-400;
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Mobile-optimized infinite scroll */
+.infinite-scroll-trigger {
+  @apply h-20 flex items-center justify-center;
+  touch-action: pan-y pinch-zoom;
+}
